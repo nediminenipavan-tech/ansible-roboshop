@@ -3,13 +3,13 @@
   connection: local
   vars:
    ami_id: ami-09c813fb71547fc4f
-   sg_id: sg-0a6fb7b3161cf099d
-   zone_id: "Z0048064LID2MWLWZVV8"
+   sg_id: sg-0a6fb7b3161cf099d #replace with your SG id
+   zone_id: "Z0048064LID2MWLWZVV8" #nreplace with your id
    domain_name: "daws86pavan.cyou"
-   instancees:
+   instances:
    - mongodb
    tasks:
--  name: create ec2 instance
+   - name: create ec2 instance
    amazon.aws.ec2_instance:
    name: "{{ item }}"
    instance_type: t3.micro
