@@ -56,18 +56,20 @@
       name: mongodb-mongosh
       state: present
 
- # - name: connnect to mongodb catalogue
- #   ansible.builtin.command: mongosh mongodb.daws86pavan.cyou --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
- #  register: catalogue_output
+  - name: connnect to mongodb catalogue
+    ansible.builtin.command: mongosh mongodb.daws86pavan.cyou --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+    register: catalogue_output
 
-  - name: evaluate cataalogue database
-    community.mongodb.mongodb_shell:
-     login_host: mongodb.daws86pavan.cyou
-     eval: db.getMongo().getDBNames().indexOf('catalogue')
-     register: catalogue_output
+  # - name: evaluate cataalogue database
+  #   community.mongodb.mongodb_shell:
+  #     login_host: mongodb.daws86pavan.cyou
+  #     eval: db.getMongo().getDBNames().indexOf('catalogue')
+  #   register: catalogue_output
 
   - name: print catalogue output
     ansible.builtin.debug:
-       msg: "{{ catalogue_output }}"
+      msg: "{{ catalogue_output }}"
 
-  
+  # - name: load products into mongodb
+  #   ansible.builtin.shell: mongosh --host mongodb.daws86pavan.cyou </app/db/master-data.js
+   
