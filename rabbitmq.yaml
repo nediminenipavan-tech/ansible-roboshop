@@ -3,14 +3,14 @@
   become: yes
   tasks:
   - name: copy rabbitmq repo
-    ansible.buitin.copy:
+    ansible.builtin.copy:
       src: rabbitmq.repo
       dest: /etc/yum.repos.d/rabbitmq.repo
 
   - name: install rabbitmq server
-    ansible.buitin.service:
-    name: rabbitmq-server
-    state: present
+    ansible.builtin.package:
+      name: rabbitmq-server
+      state: present
 
   - name: start and enable rabbitmq server
     ansible.builtin.service:
@@ -20,11 +20,11 @@
 
   - name: create and provide permissions to user
     community.rabbitmq.rabbitmq_user:
-    user: RoboShop
-    password: roboshop123
-    permissions:
-      - vhost: /
-        configure_priv:  .*
-        read_priv:  .*
-        write_priv: .*
-    state: present
+      user: roboshop
+      password: roboshop123
+      permissions:
+        - vhost: /
+          configure_priv: .*
+          read_priv: .*
+          write_priv: .*
+      state: present
