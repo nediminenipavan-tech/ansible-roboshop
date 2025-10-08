@@ -7,11 +7,9 @@
    zone_id: "Z0048064LID2MWLWZVV8" #nreplace with your id
    domain_name: "daws86pavan.cyou"
    # we can pass instances through command line using -e
-   # instances:
-   # - mongodb
-   # - redis
-   # - mysql
-   # - rabbitmq
+   instances:
+   - mongodb
+   - redis
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
@@ -24,9 +22,9 @@
     loop: "{{ instances }}"
     register: ec2_output
 
- # - name: print the ec2_output
- #   ansible.builtin.debug:
- #     msg: "{{ ec2_output }}"
+  - name: print the ec2_output
+    ansible.builtin.debug:
+     msg: "{{ ec2_output }}"
 
  # - name: print public_ip
  #  ansible.builtin.debug: 
@@ -38,13 +36,13 @@
  #    msg:  "{{ item.instances[0].private_ip_address }}"
  #  loop: "{{ ec2_output.results }}"
  
-  -  name: create route53 record
-     amazon.aws.route53:
-      state: present
-      zone: "{{ domain_name }}"
-      record: "{{ item.item }}.{{ domain_name }}" 
-      type: A
-      ttl: 1
-      value: "{{ item.instances[0].private_ip_address }}"
-      overwrite: true
-     loop: "{{ ec2_output.results }}"
+#   -  name: create route53 record
+#      amazon.aws.route53:
+#       state: present
+#       zone: "{{ domain_name }}"
+#       record: "{{ item.item }}.{{ domain_name }}" 
+#       type: A
+#       ttl: 1
+#       value: "{{ item.instances[0].private_ip_address }}"
+#       overwrite: true
+#      loop: "{{ ec2_output.results }}"
