@@ -60,6 +60,6 @@
     ansible.builtin.command: mongosh mongodb.daws86pavan.cyou --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output
 
-  - name: print catalogue ec2_output
+  - name: print catalogue output
     ansible.buitlin.debug:
       msg: "{{ catalogue_output }}"
