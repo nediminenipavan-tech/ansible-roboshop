@@ -1,5 +1,5 @@
-- name: setup catalogue server
-  hosts: catalogue
+- name: setup cart server
+  hosts: cart
   become: yes
   tasks:
   - name: disable default nodejs
@@ -31,19 +31,19 @@
       state: directory
       path: /app
 
-  - name: Delete catalogue file
+  - name: Delete cart file
     ansible.builtin.file:
-      path: /tmp/catalogue.zip
+      path: /tmp/cart.zip
       state: absent 
 
-  - name: download catalogue application
+  - name: download cart application
     ansible.builtin.get_url:
-      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
-      dest: /tmp/catalogue.zip
+      url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
+      dest: /tmp/cart.zip
 
-  - name: extract catalogue application
+  - name: extract cart application
     ansible.builtin.unarchive:
-      src: /tmp/catalogue.zip
+      src: /tmp/cart.zip
       dest: /app
       remote_src: yes
 
