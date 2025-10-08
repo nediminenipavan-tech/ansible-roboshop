@@ -6,11 +6,12 @@
     sg_id: sg-0a6fb7b3161cf099d #replace with your SG id
     zone_id: "Z0048064LID2MWLWZVV8" #nreplace with your id
     domain_name: "daws86pavan.cyou"
-    instances: 
-    - mongodb
-    - redis
-    - mysql
-    - rabbitmq
+   # we acn pass instances through command line using -e
+   #  instances: 
+   #  - mongodb
+   #  - redis
+   #  - mysql
+   #  - rabbitmq
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
