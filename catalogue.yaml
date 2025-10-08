@@ -62,6 +62,7 @@
 
   - name: evaluate catalogue database
     community.mongodb.mongodb_shell:
+      login_host: mongodb.daws86pavan.cyou
       eval: db.getmongo().getDBNames().indexof('catalogue')
     register: catalogue_output
 
