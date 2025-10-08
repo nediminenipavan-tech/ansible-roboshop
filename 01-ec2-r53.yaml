@@ -56,7 +56,7 @@
       zone: "{{ domain_name }}"
       record: "{{ domain_name }}" # daws86pavan.cyo
       type: A
-      ttl: 1
+      ttl: 1 
       value: "{{ item.instances[0].public_ip_address }}"
       overwrite: true
     when: item.item == "frontend"
