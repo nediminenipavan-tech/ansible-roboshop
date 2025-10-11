@@ -62,7 +62,7 @@
   - name: import shipping data into mysql
     community.mysql.mysql_db:
       state: import
-      name: all
+      name: all 
       login_host: mysql.daws86pavan.cyou
       login_user: root
       login_password: RoboShop@1
