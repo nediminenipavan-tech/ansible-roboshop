@@ -18,12 +18,12 @@
       image_id: "{{ ami_id }}"
       tags:
         Name: "{{ item }}"
-   loop: "{{ instances }}"
-   register: ec2_output
+     loop: "{{ instances }}"
+     register: ec2_output
 
-  # - name: print the ec2_output
-  #   ansible.builtin.debug:
-  #     msg: "{{ ec2_output }}"
+   - name: print the ec2_output
+     ansible.builtin.debug:
+      msg: "{{ ec2_output }}"
 
   # - name: print public_ip
   #   ansible.builtin.debug: 
