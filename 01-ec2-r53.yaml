@@ -3,7 +3,7 @@
    connection: local
    vars:
      ami_id: ami-09c813fb71547fc4f
-     sg_id: sg-0a162d93a5a304c78 # replace with your SG ID
+     sg_id: sg-0420199dc5138236c # replace with your SG ID
      zone_id: "Z00155401S0S0TANIYY1H" # replace with your ID
      domain_name: "daws86pavan.cyou"
      instances: 
