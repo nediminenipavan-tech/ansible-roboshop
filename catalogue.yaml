@@ -20,6 +20,7 @@
       system: true
       shell: /sbin/nologin
       home: /app
+
   #safe to remove directory, because 2nd time if we run it will download freshly. noo error if does not exit
   - name: remove app directory
     ansible.builtin.file:
@@ -76,9 +77,9 @@
   #     eval: db.getmongo().getDBNames().indexof('catalogue')
   #   register: catalogue_output
 
-  - name: print catalogue output
-    ansible.builtin.debug:
-      msg: "{{ catalogue_output }}"
+  # - name: print catalogue output
+  #   ansible.builtin.debug:
+  #     msg: "{{ catalogue_output }}"
   
   - name: load products into mongodb
     ansible.builtin.shell: mongosh --host mongodb.daws86pavan.cyou </app/db/master-data.js
@@ -89,7 +90,7 @@
   #     name: catalogue
   #     enabled: yes
   #     state: started 
-  
+
   - name: daemon reload enable and start
     ansible.builtin.systemd_service:
       name: catalogue
