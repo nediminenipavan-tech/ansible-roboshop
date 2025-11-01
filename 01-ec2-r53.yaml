@@ -8,9 +8,6 @@
      domain_name: "daws86pavan.cyou"
      instances: 
      - mongodb
-     - redis 
-     - mysql
-     - rabbitmq
    tasks:
    - name: create ec2 instance
      amazon.aws.ec2_instance:
@@ -24,18 +21,18 @@
      register: ec2_output
 
   #  - name: print the ec2_output
-  #    ansible.builtin.debug:
+  #    ansible.builtin.debug: 
   #     msg: "{{ ec2_output }}"
 
-  #  - name: print public_ip
-  #    ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].public_ip_address }}"
-  #    loop: "{{ ec2_output.results }}"
+   - name: print public_ip
+     ansible.builtin.debug: 
+      msg: "{{ item.instances[0].public_ip_address }}"
+     loop: "{{ ec2_output.results }}"
 
-  # - name: print private_ip
-  #   ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].private_ip_address }}"
-  #   loop: "{{ ec2_output.results }}"
+   - name: print private_ip
+     ansible.builtin.debug: 
+      msg: "{{ item.instances[0].private_ip_address }}"
+     loop: "{{ ec2_output.results }}"
 
    - name: create route53 record
      amazon.aws.route53:
