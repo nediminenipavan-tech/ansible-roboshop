@@ -1,5 +1,5 @@
 -  name: create ec2 and r53
-   hosts: localhost
+   hosts: local
    connection: local
    vars:
      ami_id: ami-09c813fb71547fc4f
@@ -7,10 +7,10 @@
      zone_id: "Z00155401S0S0TANIYY1H" # replace with your ID
      domain_name: "daws86pavan.cyou"
      instances: 
-    #  - mongodb
-    #  - redis 
-    #  - mysql 
-    #  - rabbitmq
+     - mongodb
+     - redis 
+     - mysql 
+     - rabbitmq
    tasks:
    - name: create ec2 instance
      amazon.aws.ec2_instance:
